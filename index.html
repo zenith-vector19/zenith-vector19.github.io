@@ -1,0 +1,1612 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回家今日看料 - 影像社区 | 官方视频门户</title>
+<meta name="description" content="回家今日看料官方网站，一个专注回家题材与每日精选看料的视频内容社区，汇聚原创短片、创作者故事、城市影像与温暖陪伴的每日内容生态。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f5c4f'/%3E%3Cpath d='M14 34 L32 16 L50 34' stroke='%23e8d9b0' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='22' y='32' width='20' height='16' rx='2' fill='%23e8d9b0'/%3E%3Cpath d='M30 40 h4 v8 h-4 z' fill='%231f5c4f'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --hj-main:#1f5c4f;
+    --hj-main-dark:#123d34;
+    --hj-main-soft:#e4efe9;
+    --hj-sand:#e8d9b0;
+    --hj-sand-soft:#f7f1e1;
+    --hj-clay:#c47a4a;
+    --hj-ink:#20302b;
+    --hj-ink-soft:#52645d;
+    --hj-line:#d7e2dc;
+    --hj-bg:#f6f8f5;
+    --hj-white:#ffffff;
+    --hj-radius:14px;
+    --hj-shadow:0 8px 24px rgba(18,61,52,.08);
+    --hj-shadow-lg:0 16px 40px rgba(18,61,52,.14);
+    --hj-sticky-h:104px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hj-sticky-h) + 12px)}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    background:var(--hj-bg);
+    color:var(--hj-ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+  .hj-container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+  .hj-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.18em;color:var(--hj-clay);
+    font-weight:700;text-transform:uppercase;margin-bottom:12px;
+  }
+  .hj-eyebrow::before{content:"";width:22px;height:2px;background:var(--hj-clay);border-radius:1px}
+  h2.hj-h2{
+    font-size:clamp(22px,3vw,30px);line-height:1.35;color:var(--hj-main-dark);
+    font-weight:800;letter-spacing:.01em;
+  }
+  h3.hj-h3{font-size:18px;line-height:1.5;color:var(--hj-main-dark);font-weight:700}
+  .hj-section{padding:64px 0;position:relative}
+  .hj-section + .hj-section{border-top:1px solid var(--hj-line)}
+  .hj-section-intro{max-width:640px;color:var(--hj-ink-soft);font-size:15px;margin-top:10px}
+  .hj-section-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px}
+
+  /* ============ 公告条 + 页头 吸顶 ============ */
+  .hj-sticky-wrap{position:sticky;top:0;z-index:120;box-shadow:0 2px 14px rgba(18,61,52,.08)}
+  .hj-announce{
+    background:linear-gradient(90deg,var(--hj-main-dark),var(--hj-main));
+    color:#f2f7f4;font-size:13px;letter-spacing:.02em;
+  }
+  .hj-announce-inner{
+    display:flex;align-items:center;gap:12px;min-height:40px;padding:6px 0;flex-wrap:wrap;
+  }
+  .hj-announce-label{
+    flex-shrink:0;background:var(--hj-sand);color:var(--hj-main-dark);
+    font-weight:800;font-size:11px;padding:2px 9px;border-radius:20px;letter-spacing:.08em;
+  }
+  .hj-announce-text{flex:1;min-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .hj-announce-text b{color:var(--hj-sand)}
+  .hj-announce-link{flex-shrink:0;font-size:12px;border-bottom:1px solid rgba(232,217,176,.7);color:var(--hj-sand);white-space:nowrap}
+  .hj-header{background:rgba(246,248,245,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--hj-line)}
+  .hj-header-inner{display:flex;align-items:center;gap:24px;min-height:64px}
+  .hj-brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .hj-brand-mark{
+    width:38px;height:38px;border-radius:10px;background:var(--hj-main);color:var(--hj-sand);
+    display:grid;place-items:center;font-weight:900;font-size:18px;letter-spacing:-.02em;
+  }
+  .hj-brand-text{display:flex;flex-direction:column;line-height:1.2}
+  .hj-brand-name{font-weight:800;font-size:16px;color:var(--hj-main-dark);letter-spacing:.02em}
+  .hj-brand-sub{font-size:10px;color:var(--hj-ink-soft);letter-spacing:.22em}
+  .hj-nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .hj-nav a{
+    font-size:14px;padding:8px 12px;border-radius:8px;color:var(--hj-ink-soft);
+    font-weight:600;transition:.2s;white-space:nowrap;
+  }
+  .hj-nav a:hover{background:var(--hj-main-soft);color:var(--hj-main-dark)}
+  .hj-header-tools{display:flex;align-items:center;gap:10px;margin-left:8px}
+  .hj-search{position:relative;display:flex;align-items:center}
+  .hj-search input{
+    width:190px;padding:9px 36px 9px 14px;border-radius:22px;border:1px solid var(--hj-line);
+    background:var(--hj-white);font-size:13px;color:var(--hj-ink);outline:none;transition:.2s;
+  }
+  .hj-search input:focus{border-color:var(--hj-main);box-shadow:0 0 0 3px rgba(31,92,79,.12);width:210px}
+  .hj-search-btn{
+    position:absolute;right:4px;width:30px;height:30px;border-radius:50%;
+    display:grid;place-items:center;color:var(--hj-main);font-size:15px;
+  }
+  .hj-search-btn:hover{background:var(--hj-main-soft)}
+  .hj-search-feedback{
+    position:absolute;top:calc(100% + 8px);left:0;right:0;background:var(--hj-white);
+    border:1px solid var(--hj-line);border-radius:10px;box-shadow:var(--hj-shadow);
+    padding:10px 14px;font-size:12.5px;color:var(--hj-ink-soft);display:none;z-index:130;
+  }
+  .hj-search-feedback.is-open{display:block}
+  .hj-btn-nav{
+    background:var(--hj-main);color:#fff;font-size:13px;font-weight:700;
+    padding:9px 18px;border-radius:22px;transition:.2s;white-space:nowrap;
+  }
+  .hj-btn-nav:hover{background:var(--hj-main-dark);transform:translateY(-1px)}
+  .hj-menu-toggle{
+    display:none;width:40px;height:40px;border-radius:10px;border:1px solid var(--hj-line);
+    background:var(--hj-white);align-items:center;justify-content:center;flex-direction:column;gap:4px;
+  }
+  .hj-menu-toggle span{display:block;width:18px;height:2px;background:var(--hj-main-dark);border-radius:2px;transition:.2s}
+  .hj-menu-toggle.is-active span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+  .hj-menu-toggle.is-active span:nth-child(2){opacity:0}
+  .hj-menu-toggle.is-active span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+  /* ============ 首屏 ============ */
+  .hj-hero{padding:56px 0 64px;background:
+    radial-gradient(1000px 420px at 82% -8%,rgba(31,92,79,.14),transparent 62%),
+    radial-gradient(700px 320px at -6% 106%,rgba(196,122,74,.13),transparent 60%),
+    var(--hj-bg);
+    overflow:hidden;
+  }
+  .hj-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:48px;align-items:center}
+  .hj-hero-badge{
+    display:inline-flex;align-items:center;gap:8px;background:var(--hj-main-soft);
+    color:var(--hj-main-dark);font-size:12.5px;font-weight:700;padding:6px 14px;border-radius:20px;
+    margin-bottom:20px;letter-spacing:.04em;
+  }
+  .hj-hero-badge i{width:7px;height:7px;border-radius:50%;background:var(--hj-clay);display:inline-block}
+  h1.hj-h1{
+    font-size:clamp(34px,5.2vw,60px);line-height:1.1;font-weight:900;
+    color:var(--hj-main-dark);letter-spacing:-.01em;margin-bottom:8px;
+  }
+  .hj-hero-tagline{font-size:clamp(16px,2vw,20px);color:var(--hj-clay);font-weight:700;margin-bottom:18px;letter-spacing:.02em}
+  .hj-hero-desc{font-size:15px;color:var(--hj-ink-soft);max-width:560px;margin-bottom:26px}
+  .hj-hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+  .hj-btn-primary,.hj-btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:30px;
+    font-size:14.5px;font-weight:700;transition:.22s;
+  }
+  .hj-btn-primary{background:var(--hj-main);color:#fff;box-shadow:0 10px 22px rgba(31,92,79,.24)}
+  .hj-btn-primary:hover{background:var(--hj-main-dark);transform:translateY(-2px);box-shadow:0 14px 28px rgba(31,92,79,.3)}
+  .hj-btn-ghost{border:1.5px solid var(--hj-main);color:var(--hj-main-dark);background:transparent}
+  .hj-btn-ghost:hover{background:var(--hj-main-soft);transform:translateY(-2px)}
+  .hj-hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;border-top:1px dashed var(--hj-line);padding-top:24px}
+  .hj-stat-num{font-size:clamp(22px,2.6vw,30px);font-weight:900;color:var(--hj-main-dark);line-height:1.15;letter-spacing:-.01em}
+  .hj-stat-num em{font-style:normal;font-size:14px;color:var(--hj-clay);font-weight:700;margin-left:3px}
+  .hj-stat-label{font-size:12.5px;color:var(--hj-ink-soft);margin-top:2px}
+  .hj-hero-visual{position:relative}
+  .hj-hero-img{
+    border-radius:22px;overflow:hidden;box-shadow:var(--hj-shadow-lg);border:1px solid rgba(255,255,255,.6);
+    position:relative;
+  }
+  .hj-hero-img svg{display:block;width:100%;height:auto}
+  .hj-hero-play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:68px;height:68px;border-radius:50%;background:rgba(246,248,245,.9);
+    display:grid;place-items:center;box-shadow:0 8px 26px rgba(0,0,0,.2);transition:.22s;
+  }
+  .hj-hero-play:hover{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+  .hj-hero-play::after{content:"";display:block;width:0;height:0;border-left:20px solid var(--hj-main);border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+  .hj-hero-float{
+    position:absolute;right:-14px;bottom:-18px;background:var(--hj-white);border-radius:14px;
+    padding:14px 18px;box-shadow:var(--hj-shadow-lg);border:1px solid var(--hj-line);
+    display:flex;align-items:center;gap:12px;max-width:250px;
+  }
+  .hj-hero-float-mark{width:40px;height:40px;border-radius:10px;background:var(--hj-sand-soft);display:grid;place-items:center;font-size:19px;flex-shrink:0}
+  .hj-hero-float strong{display:block;font-size:13.5px;color:var(--hj-main-dark);line-height:1.4}
+  .hj-hero-float small{font-size:11.5px;color:var(--hj-ink-soft)}
+
+  /* ============ 品牌介绍 ============ */
+  .hj-about-grid{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:44px;align-items:start}
+  .hj-about-card{
+    background:var(--hj-white);border-radius:var(--hj-radius);padding:26px 26px 24px;
+    border:1px solid var(--hj-line);box-shadow:var(--hj-shadow);position:relative;overflow:hidden;
+  }
+  .hj-about-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--hj-main),var(--hj-clay))}
+  .hj-about-card p{font-size:14.5px;color:var(--hj-ink-soft);line-height:1.9}
+  .hj-about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .hj-about-tags span{font-size:12px;background:var(--hj-main-soft);color:var(--hj-main-dark);padding:4px 11px;border-radius:16px;font-weight:600}
+  .hj-about-list{display:grid;gap:14px}
+  .hj-about-item{
+    display:flex;gap:16px;background:var(--hj-white);border:1px solid var(--hj-line);
+    border-radius:12px;padding:16px 18px;transition:.22s;
+  }
+  .hj-about-item:hover{transform:translateX(4px);border-color:var(--hj-main);box-shadow:var(--hj-shadow)}
+  .hj-about-item-num{
+    flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--hj-main);color:var(--hj-sand);
+    display:grid;place-items:center;font-weight:800;font-size:14px;
+  }
+  .hj-about-item h3{font-size:15px;margin-bottom:3px}
+  .hj-about-item p{font-size:13.5px;color:var(--hj-ink-soft);line-height:1.8}
+
+  /* ============ 视频区：重点大图 + 文字列表 ============ */
+  .hj-video-wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:32px;align-items:start}
+  .hj-video-feature{
+    background:var(--hj-white);border-radius:var(--hj-radius);overflow:hidden;
+    border:1px solid var(--hj-line);box-shadow:var(--hj-shadow);transition:.26s;
+  }
+  .hj-video-feature:hover{box-shadow:var(--hj-shadow-lg);transform:translateY(-3px)}
+  .hj-video-feature-img{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--hj-main-dark)}
+  .hj-video-feature-img svg{width:100%;height:100%;display:block}
+  .hj-video-tagplay{
+    position:absolute;left:14px;top:14px;background:rgba(18,61,52,.86);color:var(--hj-sand);
+    font-size:11.5px;font-weight:700;padding:4px 11px;border-radius:6px;letter-spacing:.06em;
+  }
+  .hj-video-feature-body{padding:22px 24px 24px}
+  .hj-video-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12.5px;color:var(--hj-ink-soft);margin-bottom:8px}
+  .hj-video-meta .hj-author-chip{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--hj-main-dark)}
+  .hj-avatar-dot{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:10px;font-weight:800;color:#fff;background:var(--hj-clay);flex-shrink:0}
+  .hj-video-feature-body h3{font-size:20px;line-height:1.45;margin-bottom:8px}
+  .hj-video-feature-body p{font-size:14px;color:var(--hj-ink-soft);margin-bottom:14px}
+  .hj-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .hj-tags span{font-size:11.5px;color:var(--hj-main-dark);background:var(--hj-main-soft);padding:3px 10px;border-radius:12px;font-weight:600}
+  .hj-video-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid var(--hj-line);padding-top:14px}
+  .hj-act{
+    display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;
+    color:var(--hj-ink-soft);padding:6px 12px;border-radius:18px;transition:.2s;border:1px solid transparent;
+  }
+  .hj-act:hover{background:var(--hj-main-soft);color:var(--hj-main-dark);border-color:var(--hj-main-soft)}
+  .hj-act.is-liked{color:var(--hj-clay)}
+  .hj-act.is-saved{color:var(--hj-main)}
+  .hj-act .hj-act-ico{font-size:14px;line-height:1}
+  .hj-video-list{display:grid;gap:12px}
+  .hj-video-row{
+    display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:start;
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:12px;padding:14px 16px;
+    transition:.2s;
+  }
+  .hj-video-row:hover{border-color:var(--hj-main);transform:translateX(4px);box-shadow:var(--hj-shadow)}
+  .hj-video-row-idx{
+    width:52px;height:52px;border-radius:10px;background:var(--hj-sand-soft);color:var(--hj-main-dark);
+    display:grid;place-items:center;font-weight:900;font-size:16px;flex-shrink:0;border:1px solid var(--hj-line);
+  }
+  .hj-video-row h3{font-size:15px;line-height:1.5;margin-bottom:4px}
+  .hj-video-row p{font-size:12.8px;color:var(--hj-ink-soft);line-height:1.7;margin-bottom:6px}
+  .hj-video-row-foot{display:flex;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--hj-ink-soft);align-items:center}
+  .hj-video-row-foot b{color:var(--hj-main-dark);font-weight:700}
+  .hj-row-act{font-size:11.5px;font-weight:700;color:var(--hj-main);padding:2px 9px;border-radius:12px;background:var(--hj-main-soft);transition:.2s}
+  .hj-row-act:hover{background:var(--hj-main);color:#fff}
+
+  /* ============ 专题 ============ */
+  .hj-topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .hj-topic-card{
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:var(--hj-radius);
+    overflow:hidden;display:flex;flex-direction:column;transition:.24s;
+  }
+  .hj-topic-card:hover{box-shadow:var(--hj-shadow-lg);transform:translateY(-3px)}
+  .hj-topic-img{aspect-ratio:16/9;overflow:hidden}
+  .hj-topic-img svg{width:100%;height:100%;display:block}
+  .hj-topic-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .hj-status{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--hj-main-dark);background:var(--hj-main-soft);padding:3px 10px;border-radius:12px;width:max-content;margin-bottom:10px}
+  .hj-status i{width:6px;height:6px;border-radius:50%;background:var(--hj-clay)}
+  .hj-topic-body h3{font-size:17px;line-height:1.5;margin-bottom:8px}
+  .hj-topic-body > p{font-size:13.5px;color:var(--hj-ink-soft);margin-bottom:12px}
+  .hj-topic-items{display:grid;gap:6px;margin-top:auto;padding-top:12px;border-top:1px dashed var(--hj-line)}
+  .hj-topic-items li{font-size:12.8px;color:var(--hj-ink-soft);padding-left:16px;position:relative;line-height:1.7}
+  .hj-topic-items li::before{content:"▸";position:absolute;left:0;color:var(--hj-clay)}
+
+  /* ============ 关键词解析 长文 ============ */
+  .hj-essay{background:linear-gradient(180deg,var(--hj-white),var(--hj-sand-soft));border-top:1px solid var(--hj-line);border-bottom:1px solid var(--hj-line)}
+  .hj-essay-inner{max-width:860px;margin:0 auto}
+  .hj-essay h3{margin-top:26px;margin-bottom:8px;font-size:19px;color:var(--hj-main-dark)}
+  .hj-essay h3:first-of-type{margin-top:0}
+  .hj-essay p{font-size:15px;color:var(--hj-ink-soft);line-height:1.95;margin-bottom:6px}
+  .hj-essay .hj-essay-lead{font-size:16px;color:var(--hj-ink);font-weight:600;background:var(--hj-white);border-left:4px solid var(--hj-main);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:22px}
+
+  /* ============ 作者区：小型头像列表 ============ */
+  .hj-author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .hj-author-card{
+    display:flex;gap:14px;align-items:flex-start;background:var(--hj-white);
+    border:1px solid var(--hj-line);border-radius:13px;padding:18px;transition:.22s;
+  }
+  .hj-author-card:hover{border-color:var(--hj-main);box-shadow:var(--hj-shadow);transform:translateY(-2px)}
+  .hj-author-ava{
+    width:52px;height:52px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:18px;letter-spacing:.02em;
+  }
+  .hj-author-info h3{font-size:15px;margin-bottom:2px}
+  .hj-author-info .hj-author-field{font-size:11.5px;color:var(--hj-clay);font-weight:700;margin-bottom:6px}
+  .hj-author-info p{font-size:12.6px;color:var(--hj-ink-soft);line-height:1.75}
+  .hj-author-nums{display:flex;gap:12px;font-size:11.5px;color:var(--hj-ink-soft);margin-top:8px}
+  .hj-author-nums b{color:var(--hj-main-dark)}
+  .hj-author-more{margin-top:10px;font-size:12px;font-weight:700;color:var(--hj-main);display:inline-flex;gap:4px;align-items:center}
+  .hj-author-more:hover{color:var(--hj-clay)}
+
+  /* ============ 评论：双列短评 ============ */
+  .hj-comment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .hj-comment-card{
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:12px;padding:18px 20px;
+    display:flex;flex-direction:column;gap:10px;transition:.2s;
+  }
+  .hj-comment-card:hover{box-shadow:var(--hj-shadow)}
+  .hj-comment-head{display:flex;align-items:center;gap:10px}
+  .hj-comment-head .hj-avatar-dot{width:30px;height:30px;font-size:12px}
+  .hj-comment-head strong{font-size:13.5px;color:var(--hj-main-dark)}
+  .hj-comment-head time{font-size:11px;color:var(--hj-ink-soft);margin-left:auto}
+  .hj-comment-card p{font-size:13.4px;color:var(--hj-ink-soft);line-height:1.85}
+  .hj-comment-card .hj-comment-like{font-size:11.5px;color:var(--hj-ink-soft);display:flex;gap:14px;align-items:center}
+  .hj-comment-card .hj-comment-like span{display:inline-flex;gap:4px;align-items:center}
+  .hj-stars{color:var(--hj-clay);letter-spacing:1px;font-size:12.5px}
+
+  /* ============ 数据榜单 ============ */
+  .hj-rank-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .hj-rank-card{background:var(--hj-white);border:1px solid var(--hj-line);border-radius:var(--hj-radius);padding:22px 22px 18px;box-shadow:var(--hj-shadow)}
+  .hj-rank-card h3{font-size:16px;display:flex;align-items:center;gap:8px;margin-bottom:14px;color:var(--hj-main-dark)}
+  .hj-rank-card h3 span{font-size:11px;font-weight:700;color:var(--hj-clay);background:var(--hj-sand-soft);padding:2px 8px;border-radius:10px}
+  .hj-rank-list{display:grid;gap:10px}
+  .hj-rank-item{display:flex;align-items:center;gap:12px;font-size:13.2px;padding:8px 0;border-bottom:1px dashed var(--hj-line)}
+  .hj-rank-item:last-child{border-bottom:none;padding-bottom:0}
+  .hj-rank-no{width:22px;height:22px;border-radius:6px;flex-shrink:0;display:grid;place-items:center;font-size:11.5px;font-weight:900;background:var(--hj-main-soft);color:var(--hj-main-dark)}
+  .hj-rank-item:nth-child(1) .hj-rank-no{background:var(--hj-clay);color:#fff}
+  .hj-rank-item:nth-child(2) .hj-rank-no{background:var(--hj-main);color:#fff}
+  .hj-rank-item:nth-child(3) .hj-rank-no{background:var(--hj-sand);color:var(--hj-main-dark)}
+  .hj-rank-item-main{flex:1;min-width:0}
+  .hj-rank-item-main b{display:block;font-weight:700;color:var(--hj-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hj-rank-item-main small{font-size:11px;color:var(--hj-ink-soft)}
+  .hj-rank-val{font-size:12px;font-weight:800;color:var(--hj-main);flex-shrink:0}
+
+  /* ============ 企业动态 ============ */
+  .hj-news-list{display:grid;gap:12px;max-width:900px}
+  .hj-news-item{
+    display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:18px;align-items:center;
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:12px;padding:16px 20px;transition:.2s;
+  }
+  .hj-news-item:hover{border-color:var(--hj-main);transform:translateX(4px)}
+  .hj-news-date{font-size:12px;font-weight:800;color:var(--hj-main);letter-spacing:.04em}
+  .hj-news-item h3{font-size:14.5px;margin-bottom:2px}
+  .hj-news-item p{font-size:12.8px;color:var(--hj-ink-soft)}
+  .hj-news-more{font-size:12px;font-weight:700;color:var(--hj-clay);white-space:nowrap}
+  .hj-news-more:hover{text-decoration:underline}
+
+  /* ============ FAQ ============ */
+  .hj-faq{max-width:860px;display:grid;gap:10px}
+  .hj-faq details{
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:12px;padding:0 20px;
+    transition:.2s;overflow:hidden;
+  }
+  .hj-faq details[open]{border-color:var(--hj-main);box-shadow:var(--hj-shadow)}
+  .hj-faq summary{
+    list-style:none;cursor:pointer;padding:16px 0;font-size:14.5px;font-weight:700;color:var(--hj-main-dark);
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .hj-faq summary::-webkit-details-marker{display:none}
+  .hj-faq summary::after{content:"+";font-size:20px;font-weight:400;color:var(--hj-clay);transition:.2s;line-height:1}
+  .hj-faq details[open] summary::after{transform:rotate(45deg)}
+  .hj-faq details p{font-size:13.8px;color:var(--hj-ink-soft);line-height:1.85;padding:0 0 16px}
+
+  /* ============ 合作墙 ============ */
+  .hj-partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+  .hj-partner{
+    background:var(--hj-white);border:1px solid var(--hj-line);border-radius:12px;
+    padding:20px 14px;text-align:center;transition:.2s;
+  }
+  .hj-partner:hover{border-color:var(--hj-main);transform:translateY(-2px);box-shadow:var(--hj-shadow)}
+  .hj-partner-mark{width:44px;height:44px;margin:0 auto 8px;border-radius:11px;display:grid;place-items:center;font-weight:900;font-size:16px;color:#fff}
+  .hj-partner strong{display:block;font-size:13.5px;color:var(--hj-main-dark)}
+  .hj-partner small{font-size:11px;color:var(--hj-ink-soft)}
+
+  /* ============ 页脚 ============ */
+  .hj-footer{background:var(--hj-main-dark);color:#cfe0d9;padding:52px 0 26px;margin-top:12px}
+  .hj-footer-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:32px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .hj-footer-brand .hj-brand-mark{background:var(--hj-sand);color:var(--hj-main-dark)}
+  .hj-footer-brand .hj-brand-name{color:#f2f7f4}
+  .hj-footer-brand .hj-brand-sub{color:#9ab8ac}
+  .hj-footer-brand p{font-size:13px;color:#a9c3b9;margin-top:12px;line-height:1.85;max-width:320px}
+  .hj-footer-col h3{font-size:13px;color:#f2f7f4;margin-bottom:12px;letter-spacing:.06em;font-weight:800}
+  .hj-footer-col a,.hj-footer-col li{display:block;font-size:12.8px;color:#a9c3b9;padding:3px 0;transition:.2s}
+  .hj-footer-col a:hover{color:var(--hj-sand)}
+  .hj-footer-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;padding-top:20px;font-size:12px;color:#8aa79b}
+  .hj-footer-bottom a:hover{color:var(--hj-sand)}
+
+  /* ============ 交互：Toast / 弹窗 / 回到顶部 ============ */
+  .hj-toast{
+    position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);
+    background:var(--hj-main-dark);color:#f2f7f4;font-size:13px;font-weight:600;
+    padding:12px 22px;border-radius:30px;box-shadow:0 12px 30px rgba(0,0,0,.22);
+    opacity:0;pointer-events:none;transition:.28s;z-index:300;white-space:nowrap;max-width:90vw;
+  }
+  .hj-toast.is-show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .hj-modal-mask{
+    position:fixed;inset:0;background:rgba(18,61,52,.55);backdrop-filter:blur(3px);
+    z-index:250;display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .hj-modal-mask.is-open{display:flex}
+  .hj-modal{
+    background:var(--hj-white);border-radius:18px;max-width:460px;width:100%;
+    padding:26px 26px 24px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;
+    max-height:86vh;overflow:auto;animation:hjPop .24s ease;
+  }
+  @keyframes hjPop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+  .hj-modal h3{font-size:18px;color:var(--hj-main-dark);margin-bottom:6px;padding-right:30px}
+  .hj-modal p{font-size:13.6px;color:var(--hj-ink-soft);line-height:1.8;margin-bottom:12px}
+  .hj-modal-close{position:absolute;right:16px;top:14px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:17px;color:var(--hj-ink-soft);background:var(--hj-main-soft)}
+  .hj-modal-close:hover{background:var(--hj-clay);color:#fff}
+  .hj-modal label{display:block;font-size:12.5px;font-weight:700;color:var(--hj-main-dark);margin:10px 0 4px}
+  .hj-modal input,.hj-modal textarea,.hj-modal select{
+    width:100%;border:1px solid var(--hj-line);border-radius:9px;padding:9px 12px;font-size:13.5px;
+    font-family:inherit;color:var(--hj-ink);outline:none;background:var(--hj-bg);
+  }
+  .hj-modal input:focus,.hj-modal textarea:focus,.hj-modal select:focus{border-color:var(--hj-main);background:#fff}
+  .hj-modal textarea{min-height:84px;resize:vertical}
+  .hj-modal .hj-btn-primary{width:100%;justify-content:center;margin-top:16px}
+  .hj-to-top{
+    position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:50%;
+    background:var(--hj-main);color:var(--hj-sand);display:grid;place-items:center;
+    font-size:19px;box-shadow:0 10px 24px rgba(31,92,79,.34);z-index:200;
+    opacity:0;pointer-events:none;transition:.26s;
+  }
+  .hj-to-top.is-show{opacity:1;pointer-events:auto}
+  .hj-to-top:hover{background:var(--hj-main-dark);transform:translateY(-3px)}
+
+  /* ============ 响应式 ============ */
+  @media (max-width:960px){
+    .hj-hero-grid{grid-template-columns:1fr;gap:36px}
+    .hj-about-grid{grid-template-columns:1fr;gap:26px}
+    .hj-video-wrap{grid-template-columns:1fr}
+    .hj-footer-grid{grid-template-columns:1fr 1fr}
+    .hj-hero-float{right:0;bottom:-14px}
+  }
+  @media (max-width:820px){
+    :root{--hj-sticky-h:104px}
+    .hj-nav{
+      display:none;position:absolute;left:0;right:0;top:100%;background:var(--hj-white);
+      border-bottom:1px solid var(--hj-line);padding:12px 20px;flex-direction:column;gap:2px;
+      box-shadow:0 16px 30px rgba(18,61,52,.1);
+    }
+    .hj-nav.is-open{display:flex}
+    .hj-nav a{padding:11px 12px;border-radius:9px}
+    .hj-menu-toggle{display:flex;margin-left:auto}
+    .hj-search input{width:140px}
+    .hj-search input:focus{width:160px}
+    .hj-header-tools{margin-left:0}
+    .hj-header-inner{position:relative;flex-wrap:wrap;gap:12px;padding:10px 0}
+    .hj-btn-nav{display:none}
+  }
+  @media (max-width:620px){
+    .hj-container{width:calc(100% - 28px)}
+    .hj-section{padding:44px 0}
+    .hj-hero{padding:36px 0 48px}
+    .hj-hero-stats{gap:10px;grid-template-columns:1fr 1fr}
+    .hj-hero-stats > div:last-child{grid-column:1/-1}
+    .hj-hero-float{position:static;margin-top:14px;max-width:none}
+    .hj-announce-text{white-space:normal}
+    .hj-search{width:100%}
+    .hj-search input,.hj-search input:focus{width:100%}
+    .hj-header-tools{width:100%;order:5}
+    .hj-news-item{grid-template-columns:1fr;gap:4px}
+    .hj-news-more{justify-self:start}
+    .hj-footer-grid{grid-template-columns:1fr}
+    .hj-author-card{flex-direction:column}
+    .hj-to-top{right:14px;bottom:16px}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="hj-sticky-wrap" id="hjTop">
+  <div class="hj-announce" role="region" aria-label="官方公告">
+    <div class="hj-container hj-announce-inner">
+      <span class="hj-announce-label">官方发布</span>
+      <span class="hj-announce-text">新增「春运四十小时·回家今日看料」纪实专题 6 集 · <b>回家今日看料</b> 冬季创作者招募开启报名 · 本周精品内容榜单已更新</span>
+      <a class="hj-announce-link" href="#hjTopics">查看详情 →</a>
+    </div>
+  </div>
+  <header class="hj-header" role="banner">
+    <div class="hj-container hj-header-inner">
+      <a class="hj-brand" href="#hjTop" aria-label="回家今日看料官方网站首页">
+        <span class="hj-brand-mark" aria-hidden="true">回</span>
+        <span class="hj-brand-text">
+          <span class="hj-brand-name">回家今日看料</span>
+          <span class="hj-brand-sub">HOME DAILY CUT</span>
+        </span>
+      </a>
+      <nav class="hj-nav" id="hjNav" aria-label="主导航">
+        <a href="#hjAbout">品牌介绍</a>
+        <a href="#hjVideo">今日看料</a>
+        <a href="#hjTopics">专题企划</a>
+        <a href="#hjAuthors">创作者</a>
+        <a href="#hjComments">用户口碑</a>
+        <a href="#hjRank">内容榜单</a>
+        <a href="#hjNews">企业动态</a>
+        <a href="#hjFaq">常见问题</a>
+      </nav>
+      <div class="hj-header-tools">
+        <div class="hj-search">
+          <input type="search" id="hjSearchInput" placeholder="搜索回家故事 / 创作者" aria-label="站内搜索">
+          <button class="hj-search-btn" id="hjSearchBtn" type="button" aria-label="执行搜索">⌕</button>
+          <div class="hj-search-feedback" id="hjSearchFeedback" role="status" aria-live="polite"></div>
+        </div>
+        <button class="hj-btn-nav" type="button" id="hjSubmitOpen" aria-haspopup="dialog">投稿入口</button>
+      </div>
+      <button class="hj-menu-toggle" id="hjMenuToggle" type="button" aria-label="展开导航菜单" aria-expanded="false" aria-controls="hjNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<main>
+
+  <!-- ========== S2 品牌首屏 ========== -->
+  <section class="hj-hero" id="hjHero" aria-labelledby="hjHeroTitle">
+    <div class="hj-container hj-hero-grid">
+      <div class="hj-hero-copy">
+        <span class="hj-hero-badge"><i aria-hidden="true"></i>官方网站 · 企业级视频内容平台</span>
+        <h1 class="hj-h1" id="hjHeroTitle">回家今日看料</h1>
+        <p class="hj-hero-tagline">把每一次归途，剪成值得反复观看的今日看料</p>
+        <p class="hj-hero-desc">回家今日看料是一个以“回家”为情感原点、以“今日看料”为内容节奏的原创视频社区。我们记录真实归途、城市影像与家庭日常，为创作者与企业搭建高品质内容生态，让每一段平凡的归家时刻都被高清、专业地保存下来。</p>
+        <div class="hj-hero-actions">
+          <a class="hj-btn-primary" href="#hjVideo">▶ 观看今日看料</a>
+          <a class="hj-btn-ghost" href="#hjAuthors">认识创作者</a>
+          <button class="hj-btn-ghost" type="button" id="hjHeroSubmit" aria-haspopup="dialog">上传我的归途影像</button>
+        </div>
+        <div class="hj-hero-stats" aria-label="平台核心数据">
+          <div>
+            <div class="hj-stat-num" data-hj-count="286">286<em>万</em></div>
+            <div class="hj-stat-label">注册用户与观众</div>
+          </div>
+          <div>
+            <div class="hj-stat-num" data-hj-count="14200">1.42<em>万</em></div>
+            <div class="hj-stat-label">原创回家影像作品</div>
+          </div>
+          <div>
+            <div class="hj-stat-num" data-hj-count="96">96<em>%</em></div>
+            <div class="hj-stat-label">创作者续更留存率</div>
+          </div>
+        </div>
+      </div>
+      <div class="hj-hero-visual">
+        <div class="hj-hero-img">
+          <svg viewBox="0 0 640 420" role="img" aria-label="暮色归途插画：列车穿过山野，远处是亮着灯的村庄与回家的路">
+            <defs>
+              <linearGradient id="hjSky1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#123d34"/><stop offset="0.55" stop-color="#2f7a68"/><stop offset="1" stop-color="#e8cfa0"/>
+              </linearGradient>
+              <linearGradient id="hjHill1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1f5c4f"/><stop offset="1" stop-color="#123d34"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="420" fill="url(#hjSky1)"/>
+            <circle cx="486" cy="112" r="46" fill="#f6e6bd" opacity="0.92"/>
+            <circle cx="486" cy="112" r="66" fill="#f6e6bd" opacity="0.16"/>
+            <path d="M0 300 Q120 236 232 282 T460 268 T640 296 V420 H0 Z" fill="url(#hjHill1)"/>
+            <path d="M0 344 Q150 306 300 336 T640 322 V420 H0 Z" fill="#0d2f28" opacity="0.82"/>
+            <g stroke="#e8d9b0" stroke-width="2" opacity="0.6">
+              <path d="M60 380 Q200 356 340 372 T620 366"/>
+              <path d="M60 394 Q200 370 340 386 T620 380"/>
+            </g>
+            <g fill="#0d2f28">
+              <rect x="86" y="352" width="34" height="22" rx="3"/>
+              <rect x="128" y="346" width="26" height="28" rx="3"/>
+              <path d="M86 352 L103 336 L120 352 Z"/>
+              <path d="M128 346 L141 332 L154 346 Z"/>
+            </g>
+            <g fill="#f3c96b">
+              <rect x="94" y="358" width="8" height="8" rx="1"/>
+              <rect x="136" y="354" width="7" height="7" rx="1"/>
+            </g>
+            <g>
+              <rect x="330" y="318" width="126" height="42" rx="10" fill="#f2f7f4"/>
+              <rect x="336" y="324" width="112" height="16" rx="5" fill="#8fc0b0"/>
+              <circle cx="352" cy="362" r="9" fill="#123d34"/>
+              <circle cx="436" cy="362" r="9" fill="#123d34"/>
+              <rect x="392" y="324" width="10" height="16" fill="#123d34" opacity="0.18"/>
+            </g>
+            <g stroke="#f2f7f4" stroke-width="2" opacity="0.45">
+              <path d="M540 330 v-42"/><path d="M528 330 v-26"/><path d="M552 330 v-26"/>
+            </g>
+            <g fill="#f6e6bd" opacity="0.85">
+              <circle cx="540" cy="282" r="4"/><circle cx="528" cy="298" r="3"/><circle cx="552" cy="298" r="3"/>
+            </g>
+          </svg>
+          <button class="hj-hero-play" type="button" id="hjHeroPlay" aria-label="播放回家今日看料主视觉短片"></button>
+        </div>
+        <div class="hj-hero-float">
+          <span class="hj-hero-float-mark" aria-hidden="true">▶</span>
+          <span>
+            <strong>今日看料 · 第 412 期</strong>
+            <small>《四十小时的归途》已上线</small>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S2 企业简介 ========== -->
+  <section class="hj-section" id="hjAbout" aria-labelledby="hjAboutTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">关于我们</span>
+          <h2 class="hj-h2" id="hjAboutTitle">一家以“回家”为长期母题的视频品牌官网</h2>
+          <p class="hj-section-intro">回家今日看料官方网站由深耕纪实影像与社区运营的团队持续运营，坚持原创、正版与高清，用精品内容回应用户至上的承诺。</p>
+        </div>
+        <a class="hj-btn-ghost" href="#hjNews">查看品牌动态</a>
+      </div>
+      <div class="hj-about-grid">
+        <div class="hj-about-card">
+          <p>回家今日看料是一家专注“回家”题材的垂直领域视频品牌，也是一家把社区当作长期事业来运营的企业。我们以官方网站为核心阵地，为创作者提供从选题、拍摄、剪辑到发布的一站式支持，为观众提供每日精选的高清原创内容，为合作企业与地方文旅提供可信赖的影像传播方案。平台坚持正版素材与规范授权，鼓励多元表达，让“回家”从私人记忆成长为具有社会责任感的内容生态。</p>
+          <div class="hj-about-tags">
+            <span>官方网站</span><span>原创正版</span><span>高清精品</span><span>创作者社区</span><span>内容生态</span><span>持续运营</span>
+          </div>
+        </div>
+        <div class="hj-about-list">
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">01</span>
+            <div>
+              <h3>每日看料编辑室</h3>
+              <p>由 12 位内容编辑与 4 位影像指导组成，每天从投稿中筛选“回家今日看料”候选，给出剪辑与叙事建议，确保每一条上首页的作品都经得起反复观看。</p>
+            </div>
+          </div>
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">02</span>
+            <div>
+              <h3>创作者成长计划</h3>
+              <p>从新人训练营到季度挑战赛，平台以比赛、报名、投票与共创的方式陪伴创作者成长，帮助 300 余位创作者完成从记录者到表达者的转变。</p>
+            </div>
+          </div>
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">03</span>
+            <div>
+              <h3>品质与口碑双线把关</h3>
+              <p>内容审核、版权核查与社区公约三层机制并行，坚持用户首选的口碑标准；对搬运、拼接与虚假素材零容忍，让回家今日看料的每一次推荐都有据可查。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S3 今日看料：重点大图 + 文字列表 ========== -->
+  <section class="hj-section" id="hjVideo" aria-labelledby="hjVideoTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">今日看料</span>
+          <h2 class="hj-h2" id="hjVideoTitle">今天的回家今日看料，值得完整看完的三分钟</h2>
+          <p class="hj-section-intro">重点作品以大幅封面呈现，其余以文字条目索引；每条都标注作者、数据与操作，方便你收藏后慢慢看。</p>
+        </div>
+        <a class="hj-btn-ghost" href="#hjRank">查看全部榜单</a>
+      </div>
+      <div class="hj-video-wrap">
+        <article class="hj-video-feature">
+          <div class="hj-video-feature-img">
+            <svg viewBox="0 0 640 360" role="img" aria-label="绿皮火车窗边的归家人群剪影，窗外是快速后退的田野与电线杆">
+              <defs>
+                <linearGradient id="hjTrainSky" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#dcebe3"/><stop offset="0.6" stop-color="#9cc4b4"/><stop offset="1" stop-color="#2f7a68"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="360" fill="url(#hjTrainSky)"/>
+              <g stroke="#123d34" stroke-width="3" opacity="0.28">
+                <path d="M0 92 H640"/><path d="M0 168 H640"/><path d="M0 244 H640"/>
+              </g>
+              <g fill="#123d34" opacity="0.18">
+                <rect x="58" y="70" width="18" height="220"/><rect x="180" y="70" width="18" height="220"/>
+                <rect x="302" y="70" width="18" height="220"/><rect x="424" y="70" width="18" height="220"/>
+              </g>
+              <path d="M0 272 Q160 246 320 268 T640 256 V360 H0 Z" fill="#1f5c4f"/>
+              <path d="M0 310 Q200 292 400 308 T640 300 V360 H0 Z" fill="#123d34"/>
+              <g fill="#0d2f28">
+                <ellipse cx="150" cy="316" rx="34" ry="46"/>
+                <circle cx="150" cy="258" r="22"/>
+                <ellipse cx="286" cy="324" rx="30" ry="42"/>
+                <circle cx="286" cy="272" r="20"/>
+                <ellipse cx="430" cy="318" rx="36" ry="48"/>
+                <circle cx="430" cy="258" r="23"/>
+              </g>
+              <g fill="#e8d9b0" opacity="0.82">
+                <rect x="120" y="300" width="60" height="8" rx="4"/>
+                <rect x="260" y="306" width="52" height="8" rx="4"/>
+                <rect x="398" y="302" width="64" height="8" rx="4"/>
+              </g>
+              <circle cx="548" cy="82" r="34" fill="#f6e6bd"/>
+            </svg>
+            <span class="hj-video-tagplay">今日重点 · 4K 高清</span>
+          </div>
+          <div class="hj-video-feature-body">
+            <div class="hj-video-meta">
+              <span class="hj-author-chip"><span class="hj-avatar-dot" aria-hidden="true">阿</span>阿禾在归途</span>
+              <span>·</span><span>纪录片 / 12 分 08 秒</span>
+            </div>
+            <h3>《四十小时的归途》：从南方工厂到北方小院的那趟慢车</h3>
+            <p>阿禾跟着三位返乡的工友挤上绿皮火车，用固定机位拍下了行李架下的泡面、过道里打盹的老人与凌晨四点站台上的热豆浆。这期回家今日看料把“路上”本身当作主角，让人看见归途的疲惫，也看见疲惫里的期待。</p>
+            <div class="hj-tags"><span>回家今日看料</span><span>春运影像</span><span>深度纪实</span><span>原创正版</span></div>
+            <div class="hj-video-actions">
+              <button class="hj-act js-hj-like" type="button" data-count="1836" aria-pressed="false"><span class="hj-act-ico" aria-hidden="true">♡</span><span class="hj-act-num">1836</span></button>
+              <button class="hj-act js-hj-save" type="button" aria-pressed="false"><span class="hj-act-ico" aria-hidden="true">☆</span><span>收藏</span></button>
+              <button class="hj-act js-hj-comment-open" type="button" data-target="四十小时的归途"><span class="hj-act-ico" aria-hidden="true">💬</span><span>评论</span></button>
+              <button class="hj-act js-hj-share" type="button" data-title="四十小时的归途"><span class="hj-act-ico" aria-hidden="true">↗</span><span>分享</span></button>
+            </div>
+          </div>
+        </article>
+
+        <div class="hj-video-list">
+          <article class="hj-video-row">
+            <div class="hj-video-row-idx" aria-hidden="true">01</div>
+            <div>
+              <h3>《妈妈的红烧肉有 18 个步骤》</h3>
+              <p>女儿举着手机跟拍母亲做年夜饭，从挑五花到收汁，把一句“盐少放点”拍成了完整的家庭口述史。</p>
+              <div class="hj-video-row-foot">
+                <span>作者 <b>三粒米</b></span><span>播放 <b>21.4万</b></span><span>点赞 <b>9862</b></span><span>收藏 <b>4311</b></span>
+                <button class="hj-row-act js-hj-like" type="button" data-count="9862">点赞</button>
+                <button class="hj-row-act js-hj-comment-open" type="button" data-target="妈妈的红烧肉有 18 个步骤">评论</button>
+              </div>
+            </div>
+          </article>
+          <article class="hj-video-row">
+            <div class="hj-video-row-idx" aria-hidden="true">02</div>
+            <div>
+              <h3>《在地铁末班车上，我听见了五个回家故事》</h3>
+              <p>通勤观察类看料：加班的设计师、代驾师傅、考研的人，末班车成了城市里最安静的会客厅。</p>
+              <div class="hj-video-row-foot">
+                <span>作者 <b>周末不加班</b></span><span>播放 <b>16.8万</b></span><span>点赞 <b>7405</b></span><span>收藏 <b>3188</b></span>
+                <button class="hj-row-act js-hj-like" type="button" data-count="7405">点赞</button>
+                <button class="hj-row-act js-hj-comment-open" type="button" data-target="地铁末班车上的五个回家故事">评论</button>
+              </div>
+            </div>
+          </article>
+          <article class="hj-video-row">
+            <div class="hj-video-row-idx" aria-hidden="true">03</div>
+            <div>
+              <h3>《一年只开半个月的回家小店》</h3>
+              <p>老街区里那家只在春节前后营业的杂货铺，老板一年拍一条回家今日看料，已连续记录七年。</p>
+              <div class="hj-video-row-foot">
+                <span>作者 <b>街角存档</b></span><span>播放 <b>12.2万</b></span><span>点赞 <b>5320</b></span><span>收藏 <b>2874</b></span>
+                <button class="hj-row-act js-hj-like" type="button" data-count="5320">点赞</button>
+                <button class="hj-row-act js-hj-comment-open" type="button" data-target="一年只开半个月的回家小店">评论</button>
+              </div>
+            </div>
+          </article>
+          <article class="hj-video-row">
+            <div class="hj-video-row-idx" aria-hidden="true">04</div>
+            <div>
+              <h3>《把奶奶的方言剪成一支预告片》</h3>
+              <p>创作者用影像修复旧磁带里的乡音，配上新拍的村庄空镜，让快要消失的方言重新有了画面。</p>
+              <div class="hj-video-row-foot">
+                <span>作者 <b>拾音人小满</b></span><span>播放 <b>9.7万</b></span><span>点赞 <b>4109</b></span><span>收藏 <b>2650</b></span>
+                <button class="hj-row-act js-hj-like" type="button" data-count="4109">点赞</button>
+                <button class="hj-row-act js-hj-comment-open" type="button" data-target="把奶奶的方言剪成一支预告片">评论</button>
+              </div>
+            </div>
+          </article>
+          <article class="hj-video-row">
+            <div class="hj-video-row-idx" aria-hidden="true">05</div>
+            <div>
+              <h3>《搬家第五次，我终于把出租屋叫作家》</h3>
+              <p>城市青年的居住记录：从 8 平米合租到有窗的一居室，结尾那盏小灯是这期回家今日看料的情绪落点。</p>
+              <div class="hj-video-row-foot">
+                <span>作者 <b>阿禾在归途</b></span><span>播放 <b>8.3万</b></span><span>点赞 <b>3654</b></span><span>收藏 <b>1902</b></span>
+                <button class="hj-row-act js-hj-like" type="button" data-count="3654">点赞</button>
+                <button class="hj-row-act js-hj-comment-open" type="button" data-target="搬家第五次，我终于把出租屋叫作家">评论</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S4 专题企划 ========== -->
+  <section class="hj-section" id="hjTopics" aria-labelledby="hjTopicsTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">专题企划</span>
+          <h2 class="hj-h2" id="hjTopicsTitle">三组长期专题，把回家今日看料做成一门慢功夫</h2>
+          <p class="hj-section-intro">专题由编辑室与创作者共同策划，按季度更新，每期围绕一个具体问题展开，持续运营、持续更新。</p>
+        </div>
+      </div>
+      <div class="hj-topic-grid">
+        <article class="hj-topic-card">
+          <div class="hj-topic-img">
+            <svg viewBox="0 0 480 270" role="img" aria-label="专题封面：春运站台上拖着行李的背影与电子屏时刻表">
+              <rect width="480" height="270" fill="#123d34"/>
+              <rect x="0" y="182" width="480" height="88" fill="#1f5c4f"/>
+              <rect x="0" y="160" width="480" height="22" fill="#e8d9b0" opacity="0.55"/>
+              <g fill="#e8d9b0" opacity="0.9">
+                <rect x="42" y="42" width="176" height="16" rx="4"/>
+                <rect x="42" y="68" width="130" height="10" rx="3" opacity="0.6"/>
+                <rect x="42" y="86" width="150" height="10" rx="3" opacity="0.6"/>
+              </g>
+              <g fill="#0d2f28">
+                <ellipse cx="300" cy="212" rx="28" ry="42"/>
+                <circle cx="300" cy="158" r="18"/>
+                <rect x="322" y="176" width="34" height="38" rx="6"/>
+                <rect x="356" y="184" width="24" height="26" rx="5"/>
+              </g>
+              <g stroke="#f2f7f4" stroke-width="2" opacity="0.4">
+                <path d="M392 0 V160"/><path d="M424 0 V160"/><path d="M456 0 V160"/>
+              </g>
+            </svg>
+          </div>
+          <div class="hj-topic-body">
+            <span class="hj-status"><i aria-hidden="true"></i>更新至第 6 集 · 连载中</span>
+            <h3>《春运四十小时》</h3>
+            <p>用三位返乡者的全程跟拍，回答一个具体问题：在高铁时代，为什么还有人愿意坐三十多个小时的慢车回家？</p>
+            <ul class="hj-topic-items">
+              <li>第 4 集：站台上的四碗热汤面</li>
+              <li>第 5 集：行李架下的折叠凳</li>
+              <li>第 6 集：出站口的第一个拥抱</li>
+            </ul>
+          </div>
+        </article>
+        <article class="hj-topic-card">
+          <div class="hj-topic-img">
+            <svg viewBox="0 0 480 270" role="img" aria-label="专题封面：夜色小区楼栋灯窗与人行道暖光">
+              <rect width="480" height="270" fill="#1b2f3a"/>
+              <g fill="#123d34">
+                <rect x="40" y="60" width="120" height="210"/>
+                <rect x="188" y="34" width="140" height="236"/>
+                <rect x="356" y="86" width="96" height="184"/>
+              </g>
+              <g fill="#f3c96b">
+                <rect x="58" y="84" width="20" height="20" rx="2"/><rect x="96" y="84" width="20" height="20" rx="2"/>
+                <rect x="58" y="124" width="20" height="20" rx="2"/><rect x="96" y="160" width="20" height="20" rx="2"/>
+                <rect x="206" y="60" width="22" height="22" rx="2"/><rect x="246" y="60" width="22" height="22" rx="2"/>
+                <rect x="286" y="60" width="22" height="22" rx="2"/><rect x="206" y="104" width="22" height="22" rx="2"/>
+                <rect x="286" y="104" width="22" height="22" rx="2"/><rect x="246" y="148" width="22" height="22" rx="2"/>
+                <rect x="374" y="110" width="18" height="18" rx="2"/><rect x="410" y="110" width="18" height="18" rx="2"/>
+                <rect x="374" y="150" width="18" height="18" rx="2"/>
+              </g>
+              <path d="M0 236 H480" stroke="#e8d9b0" stroke-width="4" opacity="0.6"/>
+              <ellipse cx="240" cy="252" rx="120" ry="12" fill="#f3c96b" opacity="0.18"/>
+            </svg>
+          </div>
+          <div class="hj-topic-body">
+            <span class="hj-status"><i aria-hidden="true"></i>每月 15 日更新</span>
+            <h3>《城市里的第二个家》</h3>
+            <p>聚焦租房青年与异乡打工人：当“回家”暂时无法实现，人们如何在城市里为自己布置一个有归属感的角落。</p>
+            <ul class="hj-topic-items">
+              <li>第 7 期：8 平米里的六盆绿植</li>
+              <li>第 8 期：合租厨房的共享食谱</li>
+              <li>第 9 期：夜班回家路上的那盏灯</li>
+            </ul>
+          </div>
+        </article>
+        <article class="hj-topic-card">
+          <div class="hj-topic-img">
+            <svg viewBox="0 0 480 270" role="img" aria-label="专题封面：老屋门前的竹椅、热气茶壶与斜射进院子的光">
+              <rect width="480" height="270" fill="#e8d9b0"/>
+              <path d="M0 0 H480 V120 H0 Z" fill="#f7f1e1"/>
+              <rect x="0" y="120" width="480" height="150" fill="#c9b98d"/>
+              <g stroke="#a8894f" stroke-width="3" opacity="0.5">
+                <path d="M0 158 H480"/><path d="M0 196 H480"/><path d="M0 234 H480"/>
+              </g>
+              <path d="M120 0 L240 120 L360 0 Z" fill="#f6e6bd" opacity="0.75"/>
+              <g fill="#5c4630">
+                <rect x="120" y="176" width="96" height="12" rx="4"/>
+                <rect x="128" y="188" width="8" height="42"/><rect x="200" y="188" width="8" height="42"/>
+                <rect x="120" y="128" width="10" height="52" rx="3"/><rect x="206" y="128" width="10" height="52" rx="3"/>
+              </g>
+              <g fill="#1f5c4f">
+                <ellipse cx="312" cy="196" rx="42" ry="16"/>
+                <path d="M296 196 q16 -38 34 0 Z"/>
+                <rect x="338" y="180" width="20" height="12" rx="4"/>
+              </g>
+              <g stroke="#a8894f" stroke-width="2" opacity="0.55" fill="none">
+                <path d="M312 172 q-12 -22 6 -38"/><path d="M322 172 q14 -18 2 -32"/>
+              </g>
+            </svg>
+          </div>
+          <div class="hj-topic-body">
+            <span class="hj-status"><i aria-hidden="true"></i>已完结 · 共 12 集</span>
+            <h3>《老屋里的十二件东西》</h3>
+            <p>以物件为线索回看一个普通家庭的三十年：竹椅、搪瓷缸、缝纫机、挂历，每一件都连着一次回家。</p>
+            <ul class="hj-topic-items">
+              <li>第 10 集：那把一直留着的竹椅</li>
+              <li>第 11 集：抽屉最底下的车票</li>
+              <li>第 12 集：门框上逐年升高的刻痕</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== M15 关键词解析长文 ========== -->
+  <section class="hj-section hj-essay" id="hjEssay" aria-labelledby="hjEssayTitle">
+    <div class="hj-container hj-essay-inner">
+      <span class="hj-eyebrow">深度解析</span>
+      <h2 class="hj-h2" id="hjEssayTitle">为什么“回家今日看料”能成为一个长期成立的内容母题</h2>
+      <p class="hj-essay-lead">“回家”是极少数不需要解释的情绪入口，“今日看料”则提供了稳定的观看节奏。把两者放在一起，回家今日看料并不是一个临时的热点标签，而是一套可以持续运营、持续积累的内容方法：每天有一件具体的事被看见，每年有一批人愿意回来讲述。</p>
+
+      <h3>一、从“回家”到“今日看料”：一个母题如何获得日常性</h3>
+      <p>回家的叙事很容易落入节日化的陷阱：春节前后热闹一阵，其余时间无人问津。回家今日看料的第一个方法论，是把“回家”拆成可以每天拍摄的小动作——晚高峰挤上公交、在楼下便利店加热一份便当、给父母打一个三分钟的视频电话、把行李箱从床底拖出来擦一遍。这些动作不具备仪式感，却构成了真实的日常。我们要求创作者在投稿时写明拍摄时间与地点，并附上一句“为什么今天值得被记录”。这句短短的自述往往比镜头更动人，也让回家今日看料从“节日内容”变成“每日内容”。平台编辑室每天从数百条投稿中挑选 20 条进入预备池，再从中选出 6 条作为当日看料，节奏稳定，标准清晰。</p>
+
+      <h3>二、真实感来自可核对的细节，而不是更贵的设备</h3>
+      <p>很多创作者误以为高清设备等于品质，其实观众真正在意的是可核对的细节。回家今日看料有一条明确的编辑准则：每一条作品至少要有一个“不可替代的瞬间”。它可以是母亲把菜端上桌时那句“趁热吃”，可以是村口小卖部老板报出的一串赊账金额，也可以是出租屋窗外那棵每年都开花的树。我们鼓励创作者保留环境音，保留手抖，保留没有剪干净的停顿，因为正是这些不完美让影像具备温度。在技术层面，平台提供统一的字幕模板、响度标准与封面规范，帮助创作者把表达力集中在内容本身，而不是把时间花在参数调试上。这种“专业但不设门槛”的基础设施，是回家今日看料能够持续吸引非科班创作者的重要原因，也让社区里的多元表达成为可能。</p>
+
+      <h3>三、社区如何让一次观看变成一次参与</h3>
+      <p>如果视频只是被看完，内容生态就只是一个播放池。回家今日看料的社区设计围绕“参与”展开：观众可以在评论里补充自己的归途细节，可以投票选出下周的拍摄主题，也可以报名参加每季度的共创挑战赛。我们把比赛、报名、上传、投票做成一条完整的链路，让一次观看有机会转化为一次创作。过去一年，平台共举办 4 季挑战赛，收到 2100 余条参赛作品，其中 186 位创作者是第一次拿起相机。更重要的是，许多作品之间形成了互文：有人拍了火车上的泡面，就有人接着拍泡面的牌子和价格；有人拍了老家门框的刻痕，就有人翻出自家门框的照片对照。回家今日看料由此从一个内容平台，慢慢变成一个可以被共同书写的记忆档案。对品牌与企业合作方而言，这种真实的社区氛围也带来了更可信赖的传播效果——用户首选的口碑，往往就来自这些具体而微的相互回应。</p>
+
+      <h3>四、品牌、创作者与观众之间的三方信任</h3>
+      <p>视频品牌的长期竞争力，最终落在信任上。回家今日看料在首页明确标注官方网站身份，所有作品均要求原创正版，转载必须获得授权；对涉嫌搬运与摆拍的内容，平台会在 24 小时内完成核查并公示处理结果。这种看似“慢”的做法，换来的是创作者愿意首发、观众愿意收藏、合作方愿意长期投入。我们也把企业动态、更新日志与 FAQ 放在官网上公开呈现，让每一次规则调整都有迹可循。回家今日看料相信，品质与口碑不是宣传语，而是由一条条具体的作品、一次次及时的回应共同累积出来的。也正因为如此，这个以“回家”为名的视频社区，才有可能在热点快速轮换的当下，持续运营下去，并陪伴一代创作者完成他们关于影像与表达的最初练习。</p>
+    </div>
+  </section>
+
+  <!-- ========== S5 创作者 ========== -->
+  <section class="hj-section" id="hjAuthors" aria-labelledby="hjAuthorsTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">创作者矩阵</span>
+          <h2 class="hj-h2" id="hjAuthorsTitle">在回家今日看料持续更新的六位创作者</h2>
+          <p class="hj-section-intro">他们来自不同城市与职业，唯一的共同点是：愿意把镜头对准自己回家的那条路。</p>
+        </div>
+      </div>
+      <div class="hj-author-grid">
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#1f5c4f" aria-hidden="true">阿</div>
+          <div class="hj-author-info">
+            <h3>阿禾在归途</h3>
+            <div class="hj-author-field">深度纪实 · 长途归途</div>
+            <p>前新闻摄影记者，现为独立纪录片创作者。习惯用固定机位和长镜头拍“路上的人”，坚持不用旁白解释情绪。她认为回家今日看料最珍贵的部分，是那些没有被剪掉的等待。</p>
+            <div class="hj-author-nums"><span>作品 <b>86</b></span><span>粉丝 <b>42.6万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="阿禾在归途">查看主页 →</button>
+          </div>
+        </article>
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#c47a4a" aria-hidden="true">三</div>
+          <div class="hj-author-info">
+            <h3>三粒米</h3>
+            <div class="hj-author-field">家庭美食 · 厨房口述</div>
+            <p>在家带娃的第七年，把厨房当成拍摄现场。擅长用家常菜串起家庭关系，一条红烧肉能拍出三代人的饮食习惯。她的作品常被观众称为“看得见热气的回家今日看料”。</p>
+            <div class="hj-author-nums"><span>作品 <b>134</b></span><span>粉丝 <b>38.2万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="三粒米">查看主页 →</button>
+          </div>
+        </article>
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#3d6b8a" aria-hidden="true">周</div>
+          <div class="hj-author-info">
+            <h3>周末不加班</h3>
+            <div class="hj-author-field">城市观察 · 通勤日常</div>
+            <p>互联网从业者，业余拍城市夜晚。题材集中在末班车、便利店、加班楼与天桥，擅长用极短的对白呈现都市人的疲惫与体面。他的系列被收录进回家今日看料的城市观察专栏。</p>
+            <div class="hj-author-nums"><span>作品 <b>61</b></span><span>粉丝 <b>25.8万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="周末不加班">查看主页 →</button>
+          </div>
+        </article>
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#7a5c8a" aria-hidden="true">拾</div>
+          <div class="hj-author-info">
+            <h3>拾音人小满</h3>
+            <div class="hj-author-field">声音采集 · 方言与乡音</div>
+            <p>声音设计师，长期采集方言、叫卖与自然声。她把旧磁带、村口广播与手机录音重新编排成影像的一部分，让乡音成为画面之外的另一条叙事线，也记录城市更新中的声音消失。</p>
+            <div class="hj-author-nums"><span>作品 <b>47</b></span><span>粉丝 <b>19.4万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="拾音人小满">查看主页 →</button>
+          </div>
+        </article>
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#5c7a3d" aria-hidden="true">街</div>
+          <div class="hj-author-info">
+            <h3>街角存档</h3>
+            <div class="hj-author-field">在地文化 · 街区记忆</div>
+            <p>在老城区长大，做过书店店员与街区导览。他习惯用一条街的变化来测时间：哪家店换了招牌、哪棵树下多了石凳。系列短片《一年只开半个月的回家小店》已连续拍摄七年。</p>
+            <div class="hj-author-nums"><span>作品 <b>93</b></span><span>粉丝 <b>31.5万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="街角存档">查看主页 →</button>
+          </div>
+        </article>
+        <article class="hj-author-card">
+          <div class="hj-author-ava" style="background:#8a5c3d" aria-hidden="true">暖</div>
+          <div class="hj-author-info">
+            <h3>暖灯计划</h3>
+            <div class="hj-author-field">公益影像 · 陪伴记录</div>
+            <p>一个由志愿者组成的小团队，拍摄独居老人与留守儿童之间的日常陪伴。作品不以煽情为目标，强调长期跟拍与当事人授权，是回家今日看料社会责任板块的长期合作创作者。</p>
+            <div class="hj-author-nums"><span>作品 <b>38</b></span><span>粉丝 <b>22.1万</b></span></div>
+            <button class="hj-author-more js-hj-author" type="button" data-author="暖灯计划">查看主页 →</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S6 用户评价 双列短评 ========== -->
+  <section class="hj-section" id="hjComments" aria-labelledby="hjCommentsTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">用户口碑</span>
+          <h2 class="hj-h2" id="hjCommentsTitle">来自观众与创作者的八条真实短评</h2>
+          <p class="hj-section-intro">每一条评论都来自实际观看与投稿体验，我们保留原始语气，不做修饰。</p>
+        </div>
+      </div>
+      <div class="hj-comment-grid">
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">青</span><strong>青山不改</strong><time>2026-11-18</time></div>
+          <p>《四十小时的归途》看到一半就给我妈打了电话。以前觉得坐慢车回家是浪费时间，看完才明白那三十多个小时本身就是回家的一部分。回家今日看料这个选题是真好。</p>
+          <div class="hj-comment-like"><span>👍 有用 312</span><span>💬 回复 24</span><span class="hj-stars">★★★★★</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">小</span><strong>小城放映员</strong><time>2026-11-16</time></div>
+          <p>作为地方影院的放映员，我每周都会把回家今日看料投到小厅免费放给街坊看。画质稳定、字幕规范，老人也看得清。希望官方能多做一点线下放映的授权说明。</p>
+          <div class="hj-comment-like"><span>👍 有用 288</span><span>💬 回复 11</span><span class="hj-stars">★★★★★</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">一</span><strong>一只柚子</strong><time>2026-11-15</time></div>
+          <p>第一次投稿就被编辑老师回复了三条具体建议，连哪一段环境音可以保留都写了。这种认真程度在同类平台里很少见，难怪口碑一直不错。</p>
+          <div class="hj-comment-like"><span>👍 有用 201</span><span>💬 回复 7</span><span class="hj-stars">★★★★☆</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">老</span><strong>老周的相机包</strong><time>2026-11-13</time></div>
+          <p>提个小意见：专题页的更新提醒如果能推送到站内信就好了，我现在靠手动刷新。内容本身没得说，回家今日看料是我每周固定的观看清单。</p>
+          <div class="hj-comment-like"><span>👍 有用 176</span><span>💬 回复 19</span><span class="hj-stars">★★★★☆</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">阿</span><strong>阿那亚的路人</strong><time>2026-11-11</time></div>
+          <p>喜欢这里不煽情。同样拍老人，很多平台会配很满的音乐，回家今日看料敢留白，让画面自己说话。作为观众，我感受到被尊重。</p>
+          <div class="hj-comment-like"><span>👍 有用 154</span><span>💬 回复 5</span><span class="hj-stars">★★★★★</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">南</span><strong>南方tree</strong><time>2026-11-09</time></div>
+          <p>参与了上一季的共创挑战赛，虽然没进前十，但收到了完整的评审意见和一份剪辑建议清单，这些反馈比奖品更有用。会继续报名下一季。</p>
+          <div class="hj-comment-like"><span>👍 有用 143</span><span>💬 回复 8</span><span class="hj-stars">★★★★★</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">芋</span><strong>芋圆要加冰</strong><time>2026-11-06</time></div>
+          <p>移动端页面看着挺舒服，搜索“方言”能直接筛出相关作品。唯一希望评论区可以按时间排序，现在默认排序有时会漏掉新的留言。</p>
+          <div class="hj-comment-like"><span>👍 有用 89</span><span>💬 回复 13</span><span class="hj-stars">★★★☆☆</span></div>
+        </article>
+        <article class="hj-comment-card">
+          <div class="hj-comment-head"><span class="hj-avatar-dot" aria-hidden="true">木</span><strong>木工房阿良</strong><time>2026-11-03</time></div>
+          <p>我是做木工的，拍过一条给父亲修椅子的视频。没想到会被收录进专题，评论里有人认出那把椅子的款式。回家今日看料让手艺人也有被看见的机会。</p>
+          <div class="hj-comment-like"><span>👍 有用 132</span><span>💬 回复 6</span><span class="hj-stars">★★★★★</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S6 数据榜单 ========== -->
+  <section class="hj-section" id="hjRank" aria-labelledby="hjRankTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">数据榜单</span>
+          <h2 class="hj-h2" id="hjRankTitle">本周热度榜、新人榜与口碑榜</h2>
+          <p class="hj-section-intro">榜单每周一更新，数据取自站内真实播放、收藏与互动，仅作内容发现参考，不参与任何付费排名。</p>
+        </div>
+      </div>
+      <div class="hj-rank-grid">
+        <div class="hj-rank-card">
+          <h3>热度榜 <span>本周</span></h3>
+          <ol class="hj-rank-list">
+            <li class="hj-rank-item"><span class="hj-rank-no">1</span><span class="hj-rank-item-main"><b>四十小时的归途</b><small>阿禾在归途</small></span><span class="hj-rank-val">21.4万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">2</span><span class="hj-rank-item-main"><b>妈妈的红烧肉有 18 个步骤</b><small>三粒米</small></span><span class="hj-rank-val">19.8万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">3</span><span class="hj-rank-item-main"><b>地铁末班车上的五个回家故事</b><small>周末不加班</small></span><span class="hj-rank-val">16.8万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">4</span><span class="hj-rank-item-main"><b>一年只开半个月的回家小店</b><small>街角存档</small></span><span class="hj-rank-val">12.2万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">5</span><span class="hj-rank-item-main"><b>把奶奶的方言剪成一支预告片</b><small>拾音人小满</small></span><span class="hj-rank-val">9.7万</span></li>
+          </ol>
+        </div>
+        <div class="hj-rank-card">
+          <h3>新人榜 <span>近 30 天</span></h3>
+          <ol class="hj-rank-list">
+            <li class="hj-rank-item"><span class="hj-rank-no">1</span><span class="hj-rank-item-main"><b>凌晨三点的早餐铺</b><small>豆浆不加糖 · 首作</small></span><span class="hj-rank-val">4.6万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">2</span><span class="hj-rank-item-main"><b>骑车回县城的一天</b><small>许小舟 · 第 2 条</small></span><span class="hj-rank-val">3.9万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">3</span><span class="hj-rank-item-main"><b>外婆的菜园日历</b><small>菜园观察员 · 第 3 条</small></span><span class="hj-rank-val">3.1万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">4</span><span class="hj-rank-item-main"><b>出租屋的第 100 顿晚饭</b><small>一碗热汤 · 首作</small></span><span class="hj-rank-val">2.7万</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">5</span><span class="hj-rank-item-main"><b>站台广播里的方言</b><small>录音笔记 · 第 2 条</small></span><span class="hj-rank-val">2.3万</span></li>
+          </ol>
+        </div>
+        <div class="hj-rank-card">
+          <h3>口碑榜 <span>观众推荐</span></h3>
+          <ol class="hj-rank-list">
+            <li class="hj-rank-item"><span class="hj-rank-no">1</span><span class="hj-rank-item-main"><b>老屋里的十二件东西</b><small>专题 · 完结</small></span><span class="hj-rank-val">9.6 分</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">2</span><span class="hj-rank-item-main"><b>春运四十小时</b><small>专题 · 连载中</small></span><span class="hj-rank-val">9.4 分</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">3</span><span class="hj-rank-item-main"><b>城市里的第二个家</b><small>专题 · 连载中</small></span><span class="hj-rank-val">9.2 分</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">4</span><span class="hj-rank-item-main"><b>搬家第五次，我终于把出租屋叫作家</b><small>阿禾在归途</small></span><span class="hj-rank-val">9.1 分</span></li>
+            <li class="hj-rank-item"><span class="hj-rank-no">5</span><span class="hj-rank-item-main"><b>门框上逐年升高的刻痕</b><small>街角存档</small></span><span class="hj-rank-val">8.9 分</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S7 企业动态 ========== -->
+  <section class="hj-section" id="hjNews" aria-labelledby="hjNewsTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">企业动态</span>
+          <h2 class="hj-h2" id="hjNewsTitle">官方发布与平台更新日志</h2>
+          <p class="hj-section-intro">规则、功能与合作的每一次变化都在这里公开，欢迎监督与反馈。</p>
+        </div>
+      </div>
+      <div class="hj-news-list">
+        <article class="hj-news-item">
+          <span class="hj-news-date">2026-11-20</span>
+          <div>
+            <h3>「回家今日看料」冬季创作者招募启动</h3>
+            <p>面向全国开放 200 个名额，提供选题、拍摄与剪辑三阶段辅导，报名截止 12 月 10 日。</p>
+          </div>
+          <a class="hj-news-more" href="#hjFaq">了解规则</a>
+        </article>
+        <article class="hj-news-item">
+          <span class="hj-news-date">2026-11-15</span>
+          <div>
+            <h3>专题《春运四十小时》第 6 集上线</h3>
+            <p>本集聚焦出站口的第一个拥抱，同步开放观众投稿的“我的归途一分钟”征集通道。</p>
+          </div>
+          <a class="hj-news-more" href="#hjTopics">前往专题</a>
+        </article>
+        <article class="hj-news-item">
+          <span class="hj-news-date">2026-11-08</span>
+          <div>
+            <h3>版权核查机制升级公告</h3>
+            <p>新增素材授权凭证上传入口，涉嫌搬运的作品将在 24 小时内完成核查并公示结果。</p>
+          </div>
+          <a class="hj-news-more" href="#hjFaq">查看细则</a>
+        </article>
+        <article class="hj-news-item">
+          <span class="hj-news-date">2026-10-30</span>
+          <div>
+            <h3>与六家地方文旅机构达成内容合作</h3>
+            <p>共同推出在地影像计划，为地方创作者提供拍摄支持与联合展映机会。</p>
+          </div>
+          <a class="hj-news-more" href="#hjPartners">查看伙伴</a>
+        </article>
+        <article class="hj-news-item">
+          <span class="hj-news-date">2026-10-18</span>
+          <div>
+            <h3>站内搜索与标签筛选功能更新</h3>
+            <p>支持按题材、时长与地区筛选作品，搜索“回家今日看料”可直接进入每日精选合集。</p>
+          </div>
+          <a class="hj-news-more" href="#hjVideo">体验功能</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S7 合作品牌 ========== -->
+  <section class="hj-section" id="hjPartners" aria-labelledby="hjPartnersTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">合作伙伴</span>
+          <h2 class="hj-h2" id="hjPartnersTitle">与回家今日看料共同记录的品牌与机构</h2>
+          <p class="hj-section-intro">我们只与尊重创作者权益、认可长期主义的伙伴合作，所有联合内容均标注合作身份。</p>
+        </div>
+      </div>
+      <div class="hj-partner-grid">
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#1f5c4f" aria-hidden="true">途</div>
+          <strong>慢途铁路</strong>
+          <small>出行场景合作</small>
+        </div>
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#c47a4a" aria-hidden="true">灶</div>
+          <strong>灶台小馆</strong>
+          <small>家庭美食内容共创</small>
+        </div>
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#3d6b8a" aria-hidden="true">城</div>
+          <strong>城记文旅</strong>
+          <small>在地影像联合展映</small>
+        </div>
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#7a5c8a" aria-hidden="true">声</div>
+          <strong>声场实验室</strong>
+          <small>声音采集技术支持</small>
+        </div>
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#5c7a3d" aria-hidden="true">灯</div>
+          <strong>暖灯公益</strong>
+          <small>陪伴影像公益合作</small>
+        </div>
+        <div class="hj-partner">
+          <div class="hj-partner-mark" style="background:#8a5c3d" aria-hidden="true">印</div>
+          <strong>拾印影像</strong>
+          <small>后期与调色支持</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S7 FAQ ========== -->
+  <section class="hj-section" id="hjFaq" aria-labelledby="hjFaqTitle">
+    <div class="hj-container">
+      <div class="hj-section-head">
+        <div>
+          <span class="hj-eyebrow">帮助中心</span>
+          <h2 class="hj-h2" id="hjFaqTitle">关于回家今日看料的常见问题</h2>
+        </div>
+      </div>
+      <div class="hj-faq">
+        <details open>
+          <summary>投稿有什么基本要求？</summary>
+          <p>作品须为原创或已获得完整授权，时长建议 1 至 20 分钟，分辨率不低于 1080P，附 150 字以内的创作自述与拍摄地点、时间。涉及他人肖像需取得同意，涉及未成年人需监护人授权。平台不收取投稿费用。</p>
+        </details>
+        <details>
+          <summary>“回家今日看料”的每日评选标准是什么？</summary>
+          <p>编辑室从真实性、细节密度、叙事完整度与社区价值四个维度综合评估，优先选择有具体场景、有可核对细节、能引发共鸣的作品。每日入选 6 条，月度汇总是从当月的入选作品中再评选。</p>
+        </details>
+        <details>
+          <summary>入选后版权归谁？</summary>
+          <p>著作权仍归创作者所有。平台获得在官方网站及官方合作渠道展示、推荐与汇编的非独占授权，授权期限与范围在投稿协议中明确列出，创作者可随时申请下架。</p>
+        </details>
+        <details>
+          <summary>如何参加季度共创挑战赛？</summary>
+          <p>在活动页点击报名，填写创作计划并选择主题方向，通过初审后即可上传作品。每季设 4 个主题赛道，评审由编辑、创作者代表与观众投票共同组成，结果在官网公示。</p>
+        </details>
+        <details>
+          <summary>发现搬运或侵权内容怎么反馈？</summary>
+          <p>可在作品页点击“举报/反馈”，选择侵权类型并提交权属证明。平台承诺 24 小时内完成初步核查，处理结果通过站内信告知双方，并在更新日志中公示典型案例。</p>
+        </details>
+        <details>
+          <summary>是否提供创作培训或工具支持？</summary>
+          <p>是。每月一期线上公开课，涵盖选题、收音、剪辑与叙事结构；新人可申请一对一改稿。平台还提供统一的字幕模板、封面规范与响度标准，帮助作品保持稳定的观看体验。</p>
+        </details>
+        <details>
+          <summary>企业或机构可以合作吗？</summary>
+          <p>可以。我们开放联合专题、在地影像计划与展映合作三类形式，要求合作内容明确标注身份，不得干预创作者表达。请在联系我们页面提交合作意向与机构信息。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== S7 联系投稿 ========== -->
+  <section class="hj-section" id="hjContact" aria-labelledby="hjContactTitle">
+    <div class="hj-container">
+      <div class="hj-about-grid">
+        <div>
+          <span class="hj-eyebrow">联系我们</span>
+          <h2 class="hj-h2" id="hjContactTitle">把你的归途交给我们，也把建议留给我们</h2>
+          <p class="hj-section-intro">无论是投稿、合作还是功能反馈，我们都会在工作日 48 小时内回复。回家今日看料坚持用户至上，每一条意见都会被记录。</p>
+          <div class="hj-hero-actions" style="margin-top:24px">
+            <button class="hj-btn-primary" type="button" id="hjContactSubmit" aria-haspopup="dialog">提交投稿 / 反馈</button>
+            <button class="hj-btn-ghost" type="button" id="hjCopyLink">复制本页链接</button>
+          </div>
+        </div>
+        <div class="hj-about-list">
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">投</span>
+            <div>
+              <h3>投稿邮箱与通道</h3>
+              <p>官方网站投稿入口全天开放，工作日 10:00–19:00 有编辑在线答疑；邮件投稿请附作品链接与授权说明。</p>
+            </div>
+          </div>
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">合</span>
+            <div>
+              <h3>品牌与机构合作</h3>
+              <p>联合专题、在地影像计划、线下展映三类合作长期开放，请在提交时注明机构名称与预期形式。</p>
+            </div>
+          </div>
+          <div class="hj-about-item">
+            <span class="hj-about-item-num">反</span>
+            <div>
+              <h3>内容反馈与举报</h3>
+              <p>发现错误、侵权或体验问题，可通过反馈通道提交，平台将在核实后于更新日志中说明处理结果。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="hj-footer" id="hjFooter">
+  <div class="hj-container">
+    <div class="hj-footer-grid">
+      <div class="hj-footer-brand">
+        <div class="hj-brand" style="margin-bottom:10px">
+          <span class="hj-brand-mark" aria-hidden="true">回</span>
+          <span class="hj-brand-text">
+            <span class="hj-brand-name">回家今日看料</span>
+            <span class="hj-brand-sub">HOME DAILY CUT</span>
+          </span>
+        </div>
+        <p>回家今日看料官方网站 · 专注回家题材的原创视频社区。我们坚持原创正版、高清品质与持续运营，为创作者与企业搭建值得信赖的内容生态。</p>
+      </div>
+      <div class="hj-footer-col">
+        <h3>内容</h3>
+        <a href="#hjVideo">今日看料</a>
+        <a href="#hjTopics">专题企划</a>
+        <a href="#hjRank">数据榜单</a>
+        <a href="#hjEssay">深度解析</a>
+      </div>
+      <div class="hj-footer-col">
+        <h3>社区</h3>
+        <a href="#hjAuthors">创作者矩阵</a>
+        <a href="#hjComments">用户口碑</a>
+        <a href="#hjContact">投稿与反馈</a>
+        <a href="#hjFaq">帮助中心</a>
+      </div>
+      <div class="hj-footer-col">
+        <h3>关于</h3>
+        <a href="#hjAbout">品牌介绍</a>
+        <a href="#hjNews">企业动态</a>
+        <a href="#hjPartners">合作伙伴</a>
+        <a href="#hjTop">回到顶部</a>
+      </div>
+    </div>
+    <div class="hj-footer-bottom">
+      <span>© 2026 回家今日看料 官方网站 · 版权所有 · 持续运营中</span>
+      <span>回家今日看料（示例备案号：归ICP备 2026001122 号） · 原创正版 · 高清精品</span>
+    </div>
+  </div>
+</footer>
+
+<div class="hj-toast" id="hjToast" role="status" aria-live="polite"></div>
+
+<div class="hj-modal-mask" id="hjModalMask" aria-hidden="true">
+  <div class="hj-modal" role="dialog" aria-modal="true" aria-labelledby="hjModalTitle" id="hjModal">
+    <button class="hj-modal-close" type="button" id="hjModalClose" aria-label="关闭弹窗">✕</button>
+    <div id="hjModalBody"></div>
+  </div>
+</div>
+
+<button class="hj-to-top" id="hjToTop" type="button" aria-label="回到顶部">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- 移动端导航折叠 ---------- */
+  var menuToggle = document.getElementById("hjMenuToggle");
+  var nav = document.getElementById("hjNav");
+  if (menuToggle && nav) {
+    menuToggle.addEventListener("click", function(){
+      var open = nav.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-active", open);
+      menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      menuToggle.setAttribute("aria-label", open ? "收起导航菜单" : "展开导航菜单");
+    });
+    nav.addEventListener("click", function(e){
+      if (e.target.tagName === "A") {
+        nav.classList.remove("is-open");
+        menuToggle.classList.remove("is-active");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "展开导航菜单");
+      }
+    });
+  }
+
+  /* ---------- 搜索反馈 ---------- */
+  var searchInput = document.getElementById("hjSearchInput");
+  var searchBtn = document.getElementById("hjSearchBtn");
+  var searchFeedback = document.getElementById("hjSearchFeedback");
+  var searchIndex = [
+    "四十小时的归途 · 阿禾在归途 · 深度纪实",
+    "妈妈的红烧肉有 18 个步骤 · 三粒米 · 家庭美食",
+    "地铁末班车上的五个回家故事 · 周末不加班 · 城市观察",
+    "一年只开半个月的回家小店 · 街角存档 · 在地文化",
+    "把奶奶的方言剪成一支预告片 · 拾音人小满 · 声音采集",
+    "搬家第五次，我终于把出租屋叫作家 · 阿禾在归途",
+    "春运四十小时 · 专题企划 · 连载中",
+    "城市里的第二个家 · 专题企划 · 每月更新",
+    "老屋里的十二件东西 · 专题企划 · 已完结"
+  ];
+  function runSearch(){
+    if (!searchInput || !searchFeedback) return;
+    var kw = (searchInput.value || "").trim();
+    if (!kw) {
+      searchFeedback.innerHTML = "试试搜索「归途」「方言」「红酸肉」「出租屋」等关键词。";
+      searchFeedback.classList.add("is-open");
+      return;
+    }
+    var hit = searchIndex.filter(function(item){
+      return item.indexOf(kw) !== -1;
+    });
+    if (hit.length) {
+      var html = "<b style='color:#1f5c4f'>找到 " + hit.length + " 条与「" + kw + "」相关的内容：</b><br>";
+      html += hit.slice(0,3).map(function(s){ return "· " + s; }).join("<br>");
+      searchFeedback.innerHTML = html;
+    } else {
+      searchFeedback.innerHTML = "暂未找到「" + kw + "」直接相关的内容，已为你推荐今日精选，可滚动查看下方<strong>今日看料</strong>。";
+    }
+    searchFeedback.classList.add("is-open");
+  }
+  if (searchBtn) searchBtn.addEventListener("click", runSearch);
+  if (searchInput) {
+    searchInput.addEventListener("keydown", function(e){
+      if (e.key === "Enter") { e.preventDefault(); runSearch(); }
+    });
+    searchInput.addEventListener("input", function(){
+      if (!searchInput.value.trim()) searchFeedback.classList.remove("is-open");
+    });
+  }
+  document.addEventListener("click", function(e){
+    if (searchFeedback && !e.target.closest(".hj-search")) {
+      searchFeedback.classList.remove("is-open");
+    }
+  });
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById("hjToast");
+  var toastTimer = null;
+  function showToast(msg){
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add("is-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("is-show"); }, 2200);
+  }
+
+  /* ---------- 点赞 ---------- */
+  document.addEventListener("click", function(e){
+    var likeBtn = e.target.closest(".js-hj-like");
+    if (!likeBtn) return;
+    var numEl = likeBtn.querySelector(".hj-act-num");
+    var pressed = likeBtn.getAttribute("aria-pressed") === "true";
+    var base = parseInt(likeBtn.getAttribute("data-count") || "0", 10);
+    if (numEl) {
+      numEl.textContent = pressed ? base : base + 1;
+    } else {
+      likeBtn.textContent = pressed ? "点赞" : "已赞";
+    }
+    likeBtn.setAttribute("aria-pressed", pressed ? "false" : "true");
+    likeBtn.classList.toggle("is-liked", !pressed);
+    if (likeBtn.classList.contains("hj-act")) {
+      var ico = likeBtn.querySelector(".hj-act-ico");
+      if (ico) ico.textContent = pressed ? "♡" : "♥";
+    }
+    showToast(pressed ? "已取消点赞" : "感谢你的喜欢，已记录");
+  });
+
+  /* ---------- 收藏 ---------- */
+  document.addEventListener("click", function(e){
+    var saveBtn = e.target.closest(".js-hj-save");
+    if (!saveBtn) return;
+    var saved = saveBtn.getAttribute("aria-pressed") === "true";
+    saveBtn.setAttribute("aria-pressed", saved ? "false" : "true");
+    saveBtn.classList.toggle("is-saved", !saved);
+    var ico = saveBtn.querySelector(".hj-act-ico");
+    var txt = saveBtn.querySelector("span:last-child");
+    if (ico) ico.textContent = saved ? "☆" : "★";
+    if (txt) txt.textContent = saved ? "收藏" : "已收藏";
+    showToast(saved ? "已取消收藏" : "已加入收藏，稍后可在个人中心查看");
+  });
+
+  /* ---------- 复制链接 ---------- */
+  var copyLinkBtn = document.getElementById("hjCopyLink");
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener("click", function(){
+      var shareText = "回家今日看料 · 把每一次归途剪成今日看料";
+      var done = function(){ showToast("链接已复制，欢迎分享给同样在路上的人"); };
+      var fail = function(){ showToast("当前环境不支持自动复制，可手动分享本页地址"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareText + "｜" + document.title).then(done).catch(fail);
+      } else {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = shareText + "｜" + document.title;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          done();
+        } catch (err) { fail(); }
+      }
+    });
+  }
+
+  /* ---------- 分享 ---------- */
+  document.addEventListener("click", function(e){
+    var shareBtn = e.target.closest(".js-hj-share");
+    if (!shareBtn) return;
+    var title = shareBtn.getAttribute("data-title") || "回家今日看料";
+    showToast("分享「" + title + "」：可前往微信、微博或 QQ 粘贴链接");
+  });
+
+  /* ---------- 弹窗基础 ---------- */
+  var mask = document.getElementById("hjModalMask");
+  var modalBody = document.getElementById("hjModalBody");
+  var modalClose = document.getElementById("hjModalClose");
+
+  function openModal(html){
+    if (!mask || !modalBody) return;
+    modalBody.innerHTML = html;
+    mask.classList.add("is-open");
+    mask.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+  function closeModal(){
+    if (!mask) return;
+    mask.classList.remove("is-open");
+    mask.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+  if (modalClose) modalClose.addEventListener("click", closeModal);
+  if (mask) {
+    mask.addEventListener("click", function(e){
+      if (e.target === mask) closeModal();
+    });
+  }
+  document.addEventListener("keydown", function(e){
+    if (e.key === "Escape") closeModal();
+  });
+
+  /* ---------- 评论弹窗 ---------- */
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest(".js-hj-comment-open");
+    if (!btn) return;
+    var target = btn.getAttribute("data-target") || "该作品";
+    openModal(
+      "<h3>评论《" + target + "》</h3>" +
+      "<p>留下你的回家故事或观看感受，评论会在审核后展示。请文明发言，尊重当事人。</p>" +
+      "<label for='hjCommentInput'>你的评论</label>" +
+      "<textarea id='hjCommentInput' placeholder='例如：这一期让我想起自己坐夜车回家的那一年……'></textarea>" +
+      "<button class='hj-btn-primary' type='button' id='hjCommentSend'>发布评论</button>"
+    );
+    var send = document.getElementById("hjCommentSend");
+    if (send) {
+      send.addEventListener("click", function(){
+        var val = (document.getElementById("hjCommentInput") || {}).value || "";
+        if (!val.trim()) { showToast("评论内容不能为空"); return; }
+        closeModal();
+        showToast("评论已提交，审核通过后将展示在作品页");
+      });
+    }
+  });
+
+  /* ---------- 作者信息弹窗 ---------- */
+  var authorInfo = {
+    "阿禾在归途": { field:"深度纪实 · 长途归途", works:"86", fans:"42.6万", desc:"前新闻摄影记者，现为独立纪录片创作者。习惯用固定机位和长镜头记录回家路上的人，坚持不用旁白解释情绪。" },
+    "三粒米": { field:"家庭美食 · 厨房口述", works:"134", fans:"38.2万", desc:"在家带娃第七年，把厨房当拍摄现场。擅长用家常菜串起家庭关系，作品被观众称为看得见热气的回家今日看料。" },
+    "周末不加班": { field:"城市观察 · 通勤日常", works:"61", fans:"25.8万", desc:"互联网从业者，业余拍城市夜晚。题材集中在末班车、便利店与天桥，用极短对白呈现都市人的疲惫与体面。" },
+    "拾音人小满": { field:"声音采集 · 方言与乡音", works:"47", fans:"19.4万", desc:"声音设计师，长期采集方言、叫卖与自然声。把旧磁带与村口广播重新编排进影像，让乡音成为另一条叙事线。" },
+    "街角存档": { field:"在地文化 · 街区记忆", works:"93", fans:"31.5万", desc:"在老城区长大，做过书店店员与街区导览。习惯用一条街的变化测时间，系列短片已连续拍摄七年。" },
+    "暖灯计划": { field:"公益影像 · 陪伴记录", works:"38", fans:"22.1万", desc:"由志愿者组成的小团队，拍摄独居老人与留守儿童之间的日常陪伴，强调长期跟拍与当事人授权。" }
+  };
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest(".js-hj-author");
+    if (!btn) return;
+    var name = btn.getAttribute("data-author");
+    var info = authorInfo[name];
+    if (!info) return;
+    openModal(
+      "<h3>" + name + "</h3>" +
+      "<p style='color:#c47a4a;font-weight:700;margin-bottom:8px'>" + info.field + "</p>" +
+      "<p>" + info.desc + "</p>" +
+      "<p>作品 <b>" + info.works + "</b> 条 · 粉丝 <b>" + info.fans + "</b></p>" +
+      "<button class='hj-btn-primary' type='button' id='hjFollowAuthor'>关注创作者</button>"
+    );
+    var follow = document.getElementById("hjFollowAuthor");
+    if (follow) {
+      follow.addEventListener("click", function(){
+        closeModal();
+        showToast("已关注 " + name + "，新作品上线会提醒你");
+      });
+    }
+  });
+
+  /* ---------- 投稿 / 反馈弹窗 ---------- */
+  function openSubmitModal(mode){
+    var isFeedback = mode === "feedback";
+    openModal(
+      "<h3>" + (isFeedback ? "提交反馈" : "投稿 / 合作入口") + "</h3>" +
+      "<p>" + (isFeedback ? "请描述你遇到的问题或建议，我们会认真核对。" : "填写基本信息，编辑会在工作日 48 小时内与你联系。") + "</p>" +
+      "<label for='hjFormName'>称呼</label>" +
+      "<input id='hjFormName' type='text' placeholder='怎么称呼你'>" +
+      "<label for='hjFormType'>类型</label>" +
+      "<select id='hjFormType'>" +
+      (isFeedback
+        ? "<option>内容纠错</option><option>侵权举报</option><option>功能建议</option>"
+        : "<option>影像投稿</option><option>专题共创</option><option>品牌合作</option>") +
+      "</select>" +
+      "<label for='hjFormMsg'>补充说明</label>" +
+      "<textarea id='hjFormMsg' placeholder='" + (isFeedback ? "请尽量写清具体页面与问题" : "作品简介、拍摄时间地点或合作意向") + "'></textarea>" +
+      "<button class='hj-btn-primary' type='button' id='hjFormSend'>提交</button>"
+    );
+    var send = document.getElementById("hjFormSend");
+    if (send) {
+      send.addEventListener("click", function(){
+        var nm = (document.getElementById("hjFormName") || {}).value || "";
+        var msg = (document.getElementById("hjFormMsg") || {}).value || "";
+        if (!nm.trim() || !msg.trim()) { showToast("请填写称呼与补充说明"); return; }
+        closeModal();
+        showToast(isFeedback ? "反馈已提交，感谢你的监督" : "投稿信息已提交，请留意回复");
+      });
+    }
+  }
+  var submitOpen = document.getElementById("hjSubmitOpen");
+  var heroSubmit = document.getElementById("hjHeroSubmit");
+  var contactSubmit = document.getElementById("hjContactSubmit");
+  if (submitOpen) submitOpen.addEventListener("click", function(){ openSubmitModal("submit"); });
+  if (heroSubmit) heroSubmit.addEventListener("click", function(){ openSubmitModal("submit"); });
+  if (contactSubmit) contactSubmit.addEventListener("click", function(){ openSubmitModal("submit"); });
+
+  /* ---------- 首屏播放提示 ---------- */
+  var heroPlay = document.getElementById("hjHeroPlay");
+  if (heroPlay) {
+    heroPlay.addEventListener("click", function(){
+      showToast("主视觉短片《四十小时的归途》预告已加入待看列表");
+    });
+  }
+
+  /* ---------- 回到顶部 ---------- */
+  var toTop = document.getElementById("hjToTop");
+  if (toTop) {
+    window.addEventListener("scroll", function(){
+      if (window.scrollY > 480) toTop.classList.add("is-show");
+      else toTop.classList.remove("is-show");
+    }, { passive: true });
+    toTop.addEventListener("click", function(){
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+})();
+</script>
+</body>
+                  </html>
